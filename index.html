@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2048 Game Online - Play Free 2048 Puzzle Game | 2048游戏在线玩</title>
+    <meta name="description" content="Play the classic 2048 puzzle game online for free! Join the numbers and get to the 2048 tile. Challenge your brain with this addictive number puzzle game. 免费在线玩经典2048数字拼图游戏！">
+    <meta name="keywords" content="2048 game, 2048 online, puzzle game, number game, brain game, 2048游戏, 数字游戏, 益智游戏">
+    <meta name="author" content="2048 Game Online">
+    <meta property="og:title" content="2048 Game Online - Play Free 2048 Puzzle Game">
+    <meta property="og:description" content="Play the classic 2048 puzzle game online for free! Join the numbers and get to the 2048 tile.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://2048gameonline.io">
+    <meta property="og:image" content="https://2048gameonline.io/images/2048-game-preview.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="2048 Game Online - Play Free 2048 Puzzle Game">
+    <meta name="twitter:description" content="Play the classic 2048 puzzle game online for free! Join the numbers and get to the 2048 tile.">
+    <meta name="twitter:image" content="https://2048gameonline.io/images/2048-game-preview.jpg">
+    <link rel="canonical" href="https://2048gameonline.io">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "name": "2048 Game Online",
+        "url": "https://2048gameonline.io",
+        "description": "Play the classic 2048 puzzle game online for free! Join the numbers and get to the 2048 tile.",
+        "potentialAction": {
+            "@type": "SearchAction",
+            "target": "https://2048gameonline.io/search?q={search_term_string}",
+            "query-input": "required name=search_term_string"
+        }
+    }
+    </script>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="navbar">
+            <div class="nav-container">
+                <div class="nav-logo">
+                    <h1><a href="#home">2048 Game</a></h1>
+                </div>
+                <ul class="nav-menu">
+                    <li class="nav-item">
+                        <a href="#home" class="nav-link">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#game" class="nav-link">Play Game</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#how-to-play" class="nav-link">How to Play</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#features" class="nav-link">Features</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#hot-games" class="nav-link">Hot Games</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#new-games" class="nav-link">New Games</a>
+                    </li>
+                </ul>
+                <div class="hamburger">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-container">
+            <div class="hero-content">
+                <h1 class="hero-title">2048 Game Online</h1>
+                <h2 class="hero-subtitle">The Classic Number Puzzle Game</h2>
+                <p class="hero-description">
+                    Join the numbers and get to the 2048 tile! Play the most addictive puzzle game online for free. 
+                    Challenge your brain with this simple yet engaging number game.
+                </p>
+                <div class="hero-buttons">
+                    <a href="#game" class="btn btn-primary">Play Now</a>
+                    <a href="#how-to-play" class="btn btn-secondary">Learn How</a>
+                </div>
+                <div class="hero-stats">
+                    <div class="stat">
+                        <span class="stat-number">10M+</span>
+                        <span class="stat-label">Players</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">4.8/5</span>
+                        <span class="stat-label">Rating</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">Free</span>
+                        <span class="stat-label">To Play</span>
+                    </div>
+                </div>
+            </div>
+            <div class="hero-game-preview">
+                <div class="game-preview-container">
+                    <div class="game-board-preview">
+                        <div class="tile tile-2">2</div>
+                        <div class="tile tile-4">4</div>
+                        <div class="tile tile-8">8</div>
+                        <div class="tile tile-16">16</div>
+                        <div class="tile tile-32">32</div>
+                        <div class="tile tile-64">64</div>
+                        <div class="tile tile-128">128</div>
+                        <div class="tile tile-256">256</div>
+                        <div class="tile tile-512">512</div>
+                        <div class="tile tile-1024">1024</div>
+                        <div class="tile tile-2048">2048</div>
+                        <div class="tile"></div>
+                        <div class="tile"></div>
+                        <div class="tile"></div>
+                        <div class="tile"></div>
+                        <div class="tile"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Game Section -->
+    <section id="game" class="game-section">
+        <div class="container">
+            <h2 class="section-title">Play 2048 Game</h2>
+            <div class="game-container">
+                <div class="game-header">
+                    <div class="score-container">
+                        <div class="score-box">
+                            <div class="score-label">Score</div>
+                            <div class="score-value" id="score">0</div>
+                        </div>
+                        <div class="score-box">
+                            <div class="score-label">Best</div>
+                            <div class="score-value" id="best-score">0</div>
+                        </div>
+                    </div>
+                    <button class="new-game-btn" onclick="newGame()">New Game</button>
+                </div>
+                <div class="game-board" id="game-board">
+                    <!-- Game tiles will be generated by JavaScript -->
+                </div>
+                <div class="game-instructions">
+                    <p><strong>HOW TO PLAY:</strong> Use your arrow keys to move the tiles. When two tiles with the same number touch, they merge into one!</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How to Play Section -->
+    <section id="how-to-play" class="how-to-play">
+        <div class="container">
+            <h2 class="section-title">How to Play 2048</h2>
+            <div class="instructions-grid">
+                <div class="instruction-card">
+                    <div class="instruction-icon">🎯</div>
+                    <h3>Goal</h3>
+                    <p>Get to the 2048 tile by combining tiles with the same numbers</p>
+                </div>
+                <div class="instruction-card">
+                    <div class="instruction-icon">⌨️</div>
+                    <h3>Controls</h3>
+                    <p>Use arrow keys (↑↓←→) to move tiles in any direction</p>
+                </div>
+                <div class="instruction-card">
+                    <div class="instruction-icon">🔄</div>
+                    <h3>Merge</h3>
+                    <p>When two tiles with the same number touch, they merge into one</p>
+                </div>
+                <div class="instruction-card">
+                    <div class="instruction-icon">📈</div>
+                    <h3>Strategy</h3>
+                    <p>Plan your moves carefully to avoid filling up the board</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="features">
+        <div class="container">
+            <h2 class="section-title">Game Features</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">🆓</div>
+                    <h3>Free to Play</h3>
+                    <p>Completely free online game with no downloads required</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📱</div>
+                    <h3>Mobile Friendly</h3>
+                    <p>Play on any device - desktop, tablet, or mobile phone</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🏆</div>
+                    <h3>High Score</h3>
+                    <p>Track your best scores and challenge yourself to improve</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🎨</div>
+                    <h3>Beautiful Design</h3>
+                    <p>Clean, modern interface with smooth animations</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">⚡</div>
+                    <h3>Fast Loading</h3>
+                    <p>Optimized for quick loading and smooth gameplay</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🧠</div>
+                    <h3>Brain Training</h3>
+                    <p>Improve your logical thinking and problem-solving skills</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Hot Games Section -->
+    <section id="hot-games" class="hot-games">
+        <div class="container">
+            <h2 class="section-title">🔥 Hot Games</h2>
+            <div class="games-grid">
+                <div class="game-card featured">
+                    <div class="game-thumbnail">
+                        <div class="game-icon">🎮</div>
+                        <div class="play-count">9.2M</div>
+                    </div>
+                    <h3>Subway Surfers</h3>
+                    <p>Endless running adventure game</p>
+                    <div class="game-stats">
+                        <span class="plays">9.2M plays</span>
+                        <span class="rating">★ 4.9</span>
+                    </div>
+                </div>
+                <div class="game-card">
+                    <div class="game-thumbnail">
+                        <div class="game-icon">🧩</div>
+                        <div class="play-count">7.8M</div>
+                    </div>
+                    <h3>Tetris</h3>
+                    <p>Classic block puzzle game</p>
+                    <div class="game-stats">
+                        <span class="plays">7.8M plays</span>
+                        <span class="rating">★ 4.8</span>
+                    </div>
+                </div>
+                <div class="game-card">
+                    <div class="game-thumbnail">
+                        <div class="game-icon">🎯</div>
+                        <div class="play-count">6.5M</div>
+                    </div>
+                    <h3>Candy Crush</h3>
+                    <p>Match-3 puzzle adventure</p>
+                    <div class="game-stats">
+                        <span class="plays">6.5M plays</span>
+                        <span class="rating">★ 4.7</span>
+                    </div>
+                </div>
+                <div class="game-card">
+                    <div class="game-thumbnail">
+                        <div class="game-icon">🏃</div>
+                        <div class="play-count">5.9M</div>
+                    </div>
+                    <h3>Temple Run</h3>
+                    <p>Endless running game</p>
+                    <div class="game-stats">
+                        <span class="plays">5.9M plays</span>
+                        <span class="rating">★ 4.6</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- New Games Section -->
+    <section id="new-games" class="new-games">
+        <div class="container">
+            <h2 class="section-title">🆕 Latest Games</h2>
+            <div class="games-grid">
+                <div class="game-card new">
+                    <div class="game-thumbnail">
+                        <div class="game-icon">🎲</div>
+                        <div class="new-badge">NEW</div>
+                    </div>
+                    <h3>Dice Master</h3>
+                    <p>Strategic dice rolling game</p>
+                    <div class="game-stats">
+                        <span class="plays">156K plays</span>
+                        <span class="rating">★ 4.5</span>
+                    </div>
+                </div>
+                <div class="game-card new">
+                    <div class="game-thumbnail">
+                        <div class="game-icon">🌟</div>
+                        <div class="new-badge">NEW</div>
+                    </div>
+                    <h3>Star Collector</h3>
+                    <p>Space adventure puzzle game</p>
+                    <div class="game-stats">
+                        <span class="plays">89K plays</span>
+                        <span class="rating">★ 4.4</span>
+                    </div>
+                </div>
+                <div class="game-card new">
+                    <div class="game-thumbnail">
+                        <div class="game-icon">🎨</div>
+                        <div class="new-badge">NEW</div>
+                    </div>
+                    <h3>Color Match</h3>
+                    <p>Colorful matching puzzle</p>
+                    <div class="game-stats">
+                        <span class="plays">124K plays</span>
+                        <span class="rating">★ 4.3</span>
+                    </div>
+                </div>
+                <div class="game-card new">
+                    <div class="game-thumbnail">
+                        <div class="game-icon">⚡</div>
+                        <div class="new-badge">NEW</div>
+                    </div>
+                    <h3>Speed Rush</h3>
+                    <p>Fast-paced racing game</p>
+                    <div class="game-stats">
+                        <span class="plays">203K plays</span>
+                        <span class="rating">★ 4.6</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Game Categories Section -->
+    <section id="game-categories" class="game-categories">
+        <div class="container">
+            <h2 class="section-title">🎮 Game Categories</h2>
+            <div class="categories-grid">
+                <div class="category-card puzzle">
+                    <div class="category-icon">🧩</div>
+                    <h3>Puzzle Games</h3>
+                    <p>Challenge your mind with brain-teasing puzzles</p>
+                    <div class="game-count">125+ Games</div>
+                </div>
+                <div class="category-card action">
+                    <div class="category-icon">⚡</div>
+                    <h3>Action Games</h3>
+                    <p>Fast-paced games full of excitement</p>
+                    <div class="game-count">89+ Games</div>
+                </div>
+                <div class="category-card adventure">
+                    <div class="category-icon">🏃</div>
+                    <h3>Adventure</h3>
+                    <p>Explore amazing worlds and stories</p>
+                    <div class="game-count">67+ Games</div>
+                </div>
+                <div class="category-card sports">
+                    <div class="category-icon">⚽</div>
+                    <h3>Sports Games</h3>
+                    <p>Compete in your favorite sports</p>
+                    <div class="game-count">54+ Games</div>
+                </div>
+                <div class="category-card racing">
+                    <div class="category-icon">🏎️</div>
+                    <h3>Racing Games</h3>
+                    <p>Speed and compete in thrilling races</p>
+                    <div class="game-count">43+ Games</div>
+                </div>
+                <div class="category-card strategy">
+                    <div class="category-icon">♟️</div>
+                    <h3>Strategy</h3>
+                    <p>Think ahead and plan your victory</p>
+                    <div class="game-count">38+ Games</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Similar Games Section -->
+    <section id="similar-games" class="similar-games">
+        <div class="container">
+            <h2 class="section-title">Similar Games</h2>
+            <div class="games-grid">
+                <div class="game-card">
+                    <div class="game-thumbnail">
+                        <div class="game-preview-mini">
+                            <div class="mini-tile">2</div>
+                            <div class="mini-tile">4</div>
+                            <div class="mini-tile">8</div>
+                            <div class="mini-tile">16</div>
+                        </div>
+                    </div>
+                    <h3>2048 Classic</h3>
+                    <p>The original 2048 game experience</p>
+                    <div class="game-stats">
+                        <span class="plays">5.2M plays</span>
+                        <span class="rating">★ 4.8</span>
+                    </div>
+                </div>
+                <div class="game-card">
+                    <div class="game-thumbnail">
+                        <div class="game-preview-mini">
+                            <div class="mini-tile">4</div>
+                            <div class="mini-tile">8</div>
+                            <div class="mini-tile">16</div>
+                            <div class="mini-tile">32</div>
+                        </div>
+                    </div>
+                    <h3>2048 Plus</h3>
+                    <p>Enhanced version with new features</p>
+                    <div class="game-stats">
+                        <span class="plays">3.1M plays</span>
+                        <span class="rating">★ 4.7</span>
+                    </div>
+                </div>
+                <div class="game-card">
+                    <div class="game-thumbnail">
+                        <div class="game-preview-mini">
+                            <div class="mini-tile">8</div>
+                            <div class="mini-tile">16</div>
+                            <div class="mini-tile">32</div>
+                            <div class="mini-tile">64</div>
+                        </div>
+                    </div>
+                    <h3>2048 Merge</h3>
+                    <p>Challenging merge puzzle variant</p>
+                    <div class="game-stats">
+                        <span class="plays">2.8M plays</span>
+                        <span class="rating">★ 4.6</span>
+                    </div>
+                </div>
+                <div class="game-card">
+                    <div class="game-thumbnail">
+                        <div class="game-preview-mini">
+                            <div class="mini-tile">16</div>
+                            <div class="mini-tile">32</div>
+                            <div class="mini-tile">64</div>
+                            <div class="mini-tile">128</div>
+                        </div>
+                    </div>
+                    <h3>Number Puzzle</h3>
+                    <p>Similar number-based puzzle game</p>
+                    <div class="game-stats">
+                        <span class="plays">1.9M plays</span>
+                        <span class="rating">★ 4.5</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Top Rated Games Section -->
+    <section id="top-rated-games" class="top-rated-games">
+        <div class="container">
+            <h2 class="section-title">⭐ Top Rated Games</h2>
+            <div class="top-games-list">
+                <div class="top-game-item">
+                    <div class="rank">1</div>
+                    <div class="game-info">
+                        <div class="game-icon">🎮</div>
+                        <div class="game-details">
+                            <h4>2048 Game</h4>
+                            <p>Number puzzle game</p>
+                        </div>
+                    </div>
+                    <div class="game-rating">
+                        <span class="rating-stars">★★★★★</span>
+                        <span class="rating-score">4.9</span>
+                    </div>
+                    <div class="play-count">10.5M</div>
+                </div>
+                <div class="top-game-item">
+                    <div class="rank">2</div>
+                    <div class="game-info">
+                        <div class="game-icon">🏃</div>
+                        <div class="game-details">
+                            <h4>Subway Surfers</h4>
+                            <p>Endless runner</p>
+                        </div>
+                    </div>
+                    <div class="game-rating">
+                        <span class="rating-stars">★★★★★</span>
+                        <span class="rating-score">4.8</span>
+                    </div>
+                    <div class="play-count">9.2M</div>
+                </div>
+                <div class="top-game-item">
+                    <div class="rank">3</div>
+                    <div class="game-info">
+                        <div class="game-icon">🧩</div>
+                        <div class="game-details">
+                            <h4>Tetris</h4>
+                            <p>Block puzzle</p>
+                        </div>
+                    </div>
+                    <div class="game-rating">
+                        <span class="rating-stars">★★★★★</span>
+                        <span class="rating-score">4.8</span>
+                    </div>
+                    <div class="play-count">7.8M</div>
+                </div>
+                <div class="top-game-item">
+                    <div class="rank">4</div>
+                    <div class="game-info">
+                        <div class="game-icon">🎯</div>
+                        <div class="game-details">
+                            <h4>Candy Crush</h4>
+                            <p>Match-3 puzzle</p>
+                        </div>
+                    </div>
+                    <div class="game-rating">
+                        <span class="rating-stars">★★★★☆</span>
+                        <span class="rating-score">4.7</span>
+                    </div>
+                    <div class="play-count">6.5M</div>
+                </div>
+                <div class="top-game-item">
+                    <div class="rank">5</div>
+                    <div class="game-info">
+                        <div class="game-icon">🏎️</div>
+                        <div class="game-details">
+                            <h4>Speed Racer</h4>
+                            <p>Racing game</p>
+                        </div>
+                    </div>
+                    <div class="game-rating">
+                        <span class="rating-stars">★★★★☆</span>
+                        <span class="rating-score">4.6</span>
+                    </div>
+                    <div class="play-count">5.3M</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about">
+        <div class="container">
+            <h2 class="section-title">About 2048 Game</h2>
+            <div class="about-content">
+                <p>
+                    2048 is a single-player sliding block puzzle game designed by Italian web developer Gabriele Cirulli. 
+                    The game's objective is to slide numbered tiles on a grid to combine them to create a tile with the number 2048. 
+                    However, players can continue playing the game after reaching the goal, creating tiles with larger numbers.
+                </p>
+                <p>
+                    This online version brings the classic 2048 experience to your browser with smooth animations, 
+                    responsive design, and optimized gameplay. Whether you're a puzzle game enthusiast or new to number games, 
+                    2048 offers an engaging challenge that's easy to learn but difficult to master.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>2048 Game Online</h3>
+                    <p>The best place to play 2048 puzzle game online for free.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#game">Play Game</a></li>
+                        <li><a href="#how-to-play">How to Play</a></li>
+                        <li><a href="#features">Features</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Game Info</h4>
+                    <ul>
+                        <li><a href="#hot-games">Hot Games</a></li>
+                        <li><a href="#new-games">New Games</a></li>
+                        <li><a href="#game-categories">Categories</a></li>
+                        <li><a href="#top-rated-games">Top Rated</a></li>
+                        <li><a href="#similar-games">Similar Games</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Connect</h4>
+                    <div class="social-links">
+                        <a href="#" aria-label="Facebook">📘</a>
+                        <a href="#" aria-label="Twitter">🐦</a>
+                        <a href="#" aria-label="Instagram">📷</a>
+                        <a href="#" aria-label="YouTube">📺</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 2048 Game Online. All rights reserved.</p>
+                <div class="footer-links">
+                    <a href="#privacy">Privacy Policy</a>
+                    <a href="#terms">Terms of Use</a>
+                    <a href="#contact">Contact Us</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html> 
