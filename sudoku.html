@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Play Free Sudoku Online - Number Puzzle Game with Tips & Strategies</title>
+    <meta name="description" content="Play free Sudoku puzzles online! Challenge your brain with classic number puzzles. Multiple difficulty levels from Easy to Expert. Includes helpful tips and strategies. 免费在线数独游戏，挑战你的大脑！">
+    <meta name="keywords" content="sudoku, number puzzle, brain game, logic puzzle, sudoku tips, sudoku strategies, sudoku solver, free sudoku, online sudoku, 数独, 数字游戏, 逻辑谜题, 数独技巧">
+    
+    <!-- Open Graph Tags -->
+    <meta property="og:title" content="Play Free Sudoku Online - Number Puzzle Game">
+    <meta property="og:description" content="Challenge your brain with classic Sudoku puzzles! Multiple difficulty levels, helpful tips and strategies included.">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="images/sudoku-preview.jpg">
+    
+    <!-- Twitter Card Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Play Free Sudoku Online">
+    <meta name="twitter:description" content="Challenge your brain with classic Sudoku puzzles!">
+    
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="sudoku-styles.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="navbar">
+            <div class="nav-container">
+                <div class="nav-logo">
+                    <h1><a href="index.html">2048 Game Hub</a></h1>
+                </div>
+                <ul class="nav-menu">
+                    <li class="nav-item">
+                        <a href="index.html" class="nav-link">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="index.html#game" class="nav-link">2048 Game</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="sudoku.html" class="nav-link active">Sudoku</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="index.html#hot-games" class="nav-link">More Games</a>
+                    </li>
+                </ul>
+                <div class="hamburger">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Sudoku Game Section -->
+    <section class="sudoku-main">
+        <div class="container">
+            <h1 class="page-title">Play Free Sudoku Now!</h1>
+            <div class="intro-text">
+                <p class="page-description">
+                    Sudoku is one of the most popular puzzle games of all time. The goal of Sudoku is to fill a 9×9 grid with numbers so that each row, column and 3×3 section contain all of the digits between 1 and 9. As a logic puzzle, Sudoku is also an excellent brain game. If you play Sudoku daily, you will soon start to see improvements in your concentration and overall brain power. Start a game now. Within no time Sudoku free puzzles will be your favorite online game.
+                </p>
+            </div>
+            
+            <!-- Game Controls -->
+            <div class="game-controls">
+                <div class="difficulty-selector">
+                    <label for="difficulty">Difficulty:</label>
+                    <select id="difficulty" onchange="changeDifficulty()">
+                        <option value="easy">Easy</option>
+                        <option value="medium">Medium</option>
+                        <option value="hard">Hard</option>
+                        <option value="expert">Expert</option>
+                    </select>
+                </div>
+                <button class="new-game-btn" onclick="newSudokuGame()">New Game</button>
+            </div>
+
+            <!-- Game Info -->
+            <div class="game-info">
+                <div class="info-item">
+                    <span class="info-label">Difficulty</span>
+                    <span class="info-value" id="current-difficulty">Easy</span>
+                </div>
+                <div class="info-item">
+                    <span class="info-label">Mistakes</span>
+                    <span class="info-value" id="mistakes-count">0/3</span>
+                </div>
+                <div class="info-item">
+                    <span class="info-label">Time</span>
+                    <span class="info-value" id="game-time">00:00</span>
+                </div>
+            </div>
+
+            <!-- Sudoku Grid -->
+            <div class="sudoku-container">
+                <div class="sudoku-grid" id="sudoku-grid">
+                    <!-- Grid cells will be generated by JavaScript -->
+                </div>
+            </div>
+
+            <!-- Game Actions -->
+            <div class="game-actions">
+                <button class="action-btn" id="undo-btn" onclick="undoMove()">
+                    <span class="btn-icon">↶</span>
+                    <span class="btn-text">Undo</span>
+                </button>
+                <button class="action-btn" id="erase-btn" onclick="eraseCell()">
+                    <span class="btn-icon">⌫</span>
+                    <span class="btn-text">Erase</span>
+                </button>
+                <button class="action-btn" id="notes-btn" onclick="toggleNotes()" class="notes-mode">
+                    <span class="btn-icon">✏️</span>
+                    <span class="btn-text">Notes</span>
+                </button>
+                <button class="action-btn" id="hint-btn" onclick="getHint()">
+                    <span class="btn-icon">💡</span>
+                    <span class="btn-text">Hint</span>
+                </button>
+            </div>
+
+            <!-- Number Keypad -->
+            <div class="number-keypad">
+                <button class="number-btn" onclick="selectNumber(1)">1</button>
+                <button class="number-btn" onclick="selectNumber(2)">2</button>
+                <button class="number-btn" onclick="selectNumber(3)">3</button>
+                <button class="number-btn" onclick="selectNumber(4)">4</button>
+                <button class="number-btn" onclick="selectNumber(5)">5</button>
+                <button class="number-btn" onclick="selectNumber(6)">6</button>
+                <button class="number-btn" onclick="selectNumber(7)">7</button>
+                <button class="number-btn" onclick="selectNumber(8)">8</button>
+                <button class="number-btn" onclick="selectNumber(9)">9</button>
+            </div>
+
+            <!-- Game Instructions -->
+            <div class="game-instructions">
+                <h3>How to Play Sudoku</h3>
+                <p>The goal of Sudoku is to fill in a 9×9 grid with digits so that each column, row, and 3×3 section contain the numbers between 1 to 9. At the beginning of the game, the 9×9 grid will have some of the squares filled in. Your job is to use logic to fill in the missing digits and complete the grid.</p>
+                
+                <h4>Game Rules - A move is incorrect if:</h4>
+                <ul class="rules-list">
+                    <li>Any row contains more than one of the same number from 1 to 9</li>
+                    <li>Any column contains more than one of the same number from 1 to 9</li>
+                    <li>Any 3×3 grid contains more than one of the same number from 1 to 9</li>
+                </ul>
+
+                <h4>How to Use This Game:</h4>
+                <ul class="controls-list">
+                    <li>Click on any empty cell to select it</li>
+                    <li>Use the number keypad below to fill in cells</li>
+                    <li>Use keyboard numbers 1-9 for quick input</li>
+                    <li>Toggle Notes mode to add possible numbers</li>
+                    <li>Use Undo to reverse your last move</li>
+                    <li>Get hints when you're stuck</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Sudoku Section -->
+    <section class="about-sudoku">
+        <div class="container">
+            <h2 class="section-title">About Sudoku</h2>
+            <div class="about-content">
+                <p>
+                    The popular Japanese puzzle game Sudoku is based on the logical placement of numbers. An online game of logic, Sudoku doesn't require any calculation nor special math skills; all that is needed are brains and concentration.
+                </p>
+                <p>
+                    This classic puzzle game is perfect for training your brain and improving logical thinking skills. 
+                    Our online version offers multiple difficulty levels and helpful features like hints and notes to enhance your playing experience.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sudoku Tips Section -->
+    <section class="sudoku-tips">
+        <div class="container">
+            <h2 class="section-title">Sudoku Tips & Strategies</h2>
+            <div class="tips-intro">
+                <p>
+                    Sudoku is a fun puzzle game once you get the hang of it. At the same time, learning to play Sudoku can be a bit intimidating for beginners. So, if you are a complete beginner, here are a few Sudoku tips that you can use to improve your Sudoku skills.
+                </p>
+            </div>
+            
+            <div class="tips-grid">
+                <div class="tip-card">
+                    <div class="tip-number">1</div>
+                    <h3>Look for Easy Wins</h3>
+                    <p>
+                        Look for rows, columns or 3×3 sections that contain 5 or more numbers. Work through the remaining empty cells, trying the numbers that have not been used. In many cases, you will find numbers that can only be placed in one position considering the other numbers that are already in its row, column, and 3×3 grid.
+                    </p>
+                </div>
+
+                <div class="tip-card">
+                    <div class="tip-number">2</div>
+                    <h3>Use the Box Strategy</h3>
+                    <p>
+                        Break the grid up visually into 3 columns and 3 rows. Each large column will have 3, 3×3 grids and each row will have 3, 3×3 grids. Now, look for columns or grids that have 2 of the same number. Logically, there must be a 3rd copy of the same number in the only remaining 9-cell section.
+                    </p>
+                </div>
+
+                <div class="tip-card">
+                    <div class="tip-number">3</div>
+                    <h3>Use Process of Elimination</h3>
+                    <p>
+                        When you can't immediately see where a number goes, use the process of elimination. Look at each empty cell and determine which numbers are already used in that row, column, and 3×3 box. Often, you'll find that only one number can fit.
+                    </p>
+                </div>
+
+                <div class="tip-card">
+                    <div class="tip-number">4</div>
+                    <h3>Start with Easy Difficulties</h3>
+                    <p>
+                        If you're new to Sudoku, start with easy puzzles to build your confidence and understanding of the patterns. As you become more comfortable with the basic techniques, gradually move up to medium and hard difficulties.
+                    </p>
+                </div>
+
+                <div class="tip-card">
+                    <div class="tip-number">5</div>
+                    <h3>Take Your Time</h3>
+                    <p>
+                        Don't rush! Sudoku is about logical thinking, not speed. Take time to carefully analyze each move. Making mistakes early can make the puzzle much harder to solve later. Use the notes feature to track possible numbers.
+                    </p>
+                </div>
+
+                <div class="tip-card">
+                    <div class="tip-number">6</div>
+                    <h3>Practice Daily</h3>
+                    <p>
+                        Like any skill, Sudoku improves with practice. Try to solve at least one puzzle daily to keep your logical thinking sharp. You'll notice patterns and develop intuition for common Sudoku scenarios over time.
+                    </p>
+                </div>
+            </div>
+
+            <div class="tips-conclusion">
+                <p>
+                    <strong>Now that you know a little more about Sudoku, play and enjoy this free online game!</strong> Remember, every Sudoku puzzle has exactly one correct solution, so don't give up if you get stuck - there's always a logical next step.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Game Hub</h3>
+                    <p>Your destination for classic puzzle games online.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Games</h4>
+                    <ul>
+                        <li><a href="index.html#game">2048 Game</a></li>
+                        <li><a href="sudoku.html">Sudoku</a></li>
+                        <li><a href="index.html#hot-games">Hot Games</a></li>
+                        <li><a href="index.html#new-games">New Games</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="index.html#features">Features</a></li>
+                        <li><a href="index.html#game-categories">Categories</a></li>
+                        <li><a href="index.html#about">About</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Connect</h4>
+                    <div class="social-links">
+                        <a href="#" aria-label="Facebook">📘</a>
+                        <a href="#" aria-label="Twitter">🐦</a>
+                        <a href="#" aria-label="Instagram">📷</a>
+                        <a href="#" aria-label="YouTube">📺</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Game Hub. All rights reserved.</p>
+                <div class="footer-links">
+                    <a href="#privacy">Privacy Policy</a>
+                    <a href="#terms">Terms of Use</a>
+                    <a href="#contact">Contact Us</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="sudoku-game.js"></script>
+    <script src="script.js"></script>
+</body>
+</html> 

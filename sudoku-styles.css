@@ -1,0 +1,686 @@
+/* Sudoku Game Styles */
+
+.sudoku-main {
+    padding: 120px 0 80px;
+    background: #faf8ef;
+    min-height: 100vh;
+}
+
+.page-title {
+    text-align: center;
+    font-size: 2.5rem;
+    color: #776e65;
+    margin-bottom: 1rem;
+    font-weight: 700;
+}
+
+.page-description {
+    text-align: center;
+    font-size: 1.1rem;
+    color: #8f7a66;
+    margin-bottom: 3rem;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Game Controls */
+.game-controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+}
+
+.difficulty-selector {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.difficulty-selector label {
+    font-weight: 600;
+    color: #776e65;
+}
+
+.difficulty-selector select {
+    padding: 10px 15px;
+    border: 2px solid #8f7a66;
+    border-radius: 6px;
+    background: white;
+    color: #776e65;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+/* Game Info */
+.game-info {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+}
+
+.info-item {
+    background: white;
+    padding: 1rem 1.5rem;
+    border-radius: 8px;
+    text-align: center;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+    min-width: 100px;
+}
+
+.info-label {
+    display: block;
+    font-size: 0.9rem;
+    color: #8f7a66;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 0.5rem;
+}
+
+.info-value {
+    display: block;
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: #776e65;
+}
+
+/* Sudoku Container */
+.sudoku-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 2rem;
+}
+
+.sudoku-grid {
+    display: grid;
+    grid-template-columns: repeat(9, 1fr);
+    gap: 2px;
+    background: #8f7a66;
+    padding: 8px;
+    border-radius: 8px;
+    width: 450px;
+    height: 450px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.sudoku-cell {
+    background: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #776e65;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    position: relative;
+    border-radius: 2px;
+}
+
+.sudoku-cell:hover {
+    background: #f0f8ff;
+}
+
+.sudoku-cell.selected {
+    background: #e6f3ff !important;
+    box-shadow: inset 0 0 0 3px #4a90e2;
+}
+
+.sudoku-cell.given {
+    background: #f5f5f5;
+    color: #333;
+    font-weight: 800;
+    cursor: default;
+}
+
+.sudoku-cell.error {
+    background: #ffebee;
+    color: #d32f2f;
+}
+
+.sudoku-cell.highlight-row,
+.sudoku-cell.highlight-col,
+.sudoku-cell.highlight-box {
+    background: #f0f4f8;
+}
+
+.sudoku-cell.same-number {
+    background: #e8f5e8;
+    color: #2e7d2e;
+}
+
+/* 3x3 Box Borders */
+.sudoku-cell:nth-child(3n) {
+    border-right: 3px solid #8f7a66;
+}
+
+.sudoku-cell:nth-child(n+19):nth-child(-n+27),
+.sudoku-cell:nth-child(n+46):nth-child(-n+54) {
+    border-bottom: 3px solid #8f7a66;
+}
+
+/* Notes in cells */
+.sudoku-cell .notes {
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    font-size: 0.6rem;
+    color: #999;
+    line-height: 1;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    width: calc(100% - 4px);
+    height: calc(100% - 4px);
+}
+
+.sudoku-cell .notes span {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Game Actions */
+.game-actions {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+}
+
+.action-btn {
+    background: white;
+    border: 2px solid #8f7a66;
+    padding: 12px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    color: #776e65;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    min-width: 80px;
+    justify-content: center;
+}
+
+.action-btn:hover {
+    background: #8f7a66;
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(143, 122, 102, 0.3);
+}
+
+.action-btn.active {
+    background: #8f7a66;
+    color: white;
+}
+
+.action-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.btn-icon {
+    font-size: 1.2rem;
+}
+
+.btn-text {
+    font-size: 0.9rem;
+}
+
+/* Number Keypad */
+.number-keypad {
+    display: grid;
+    grid-template-columns: repeat(9, 1fr);
+    gap: 8px;
+    max-width: 450px;
+    margin: 0 auto 3rem;
+}
+
+.number-btn {
+    background: white;
+    border: 2px solid #8f7a66;
+    padding: 15px;
+    border-radius: 8px;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #776e65;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    aspect-ratio: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.number-btn:hover {
+    background: #f2b179;
+    color: white;
+    transform: scale(1.05);
+}
+
+.number-btn.selected {
+    background: #8f7a66;
+    color: white;
+}
+
+.number-btn:disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
+    transform: none;
+}
+
+/* Intro Text */
+.intro-text {
+    max-width: 900px;
+    margin: 0 auto 3rem;
+    text-align: center;
+}
+
+.intro-text .page-description {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: #776e65;
+    margin-bottom: 0;
+}
+
+/* Game Instructions */
+.game-instructions {
+    background: white;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.game-instructions h3 {
+    color: #776e65;
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+    text-align: center;
+}
+
+.game-instructions h4 {
+    color: #8f7a66;
+    margin: 1.5rem 0 1rem;
+    font-size: 1.2rem;
+}
+
+.game-instructions p {
+    color: #776e65;
+    line-height: 1.7;
+    margin-bottom: 1.5rem;
+}
+
+.game-instructions ul {
+    list-style: none;
+    padding: 0;
+}
+
+.game-instructions li {
+    color: #8f7a66;
+    margin-bottom: 0.8rem;
+    padding-left: 1.5rem;
+    position: relative;
+}
+
+.game-instructions .rules-list li:before {
+    content: "❌";
+    position: absolute;
+    left: 0;
+    color: #d32f2f;
+    font-weight: bold;
+}
+
+.game-instructions .controls-list li:before {
+    content: "✓";
+    position: absolute;
+    left: 0;
+    color: #4caf50;
+    font-weight: bold;
+}
+
+/* About Sudoku Section */
+.about-sudoku {
+    padding: 80px 0;
+    background: white;
+}
+
+.about-content {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.about-content p {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: #776e65;
+    margin-bottom: 1.5rem;
+}
+
+/* Sudoku Tips Section */
+.sudoku-tips {
+    padding: 80px 0;
+    background: #faf8ef;
+}
+
+.tips-intro {
+    max-width: 800px;
+    margin: 0 auto 3rem;
+    text-align: center;
+}
+
+.tips-intro p {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: #776e65;
+}
+
+.tips-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 2rem;
+    margin-bottom: 3rem;
+}
+
+.tip-card {
+    background: white;
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    position: relative;
+    border: 2px solid transparent;
+}
+
+.tip-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    border-color: #8f7a66;
+}
+
+.tip-number {
+    position: absolute;
+    top: -15px;
+    left: 25px;
+    background: #8f7a66;
+    color: white;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 1.2rem;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+}
+
+.tip-card h3 {
+    color: #776e65;
+    margin: 1rem 0 1rem;
+    font-size: 1.3rem;
+    font-weight: 600;
+}
+
+.tip-card p {
+    color: #8f7a66;
+    line-height: 1.7;
+    font-size: 1rem;
+    margin: 0;
+}
+
+.tips-conclusion {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+    background: white;
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.tips-conclusion p {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: #776e65;
+    margin: 0;
+}
+
+.tips-conclusion strong {
+    color: #8f7a66;
+}
+
+/* Active navigation link */
+.nav-link.active {
+    background: #8f7a66;
+    color: #f9f6f2 !important;
+    padding: 0.5rem 1rem;
+    border-radius: 3px;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+    .sudoku-grid {
+        width: 350px;
+        height: 350px;
+        gap: 1px;
+        padding: 6px;
+    }
+
+    .sudoku-cell {
+        font-size: 1.2rem;
+    }
+
+    .number-keypad {
+        grid-template-columns: repeat(3, 1fr);
+        max-width: 250px;
+        gap: 10px;
+    }
+
+    .number-btn {
+        padding: 12px;
+        font-size: 1.3rem;
+    }
+
+    .game-actions {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 0.5rem;
+    }
+
+    .action-btn {
+        padding: 10px 15px;
+        font-size: 0.9rem;
+    }
+
+    .btn-text {
+        display: none;
+    }
+
+    .game-info {
+        gap: 1rem;
+    }
+
+    .info-item {
+        padding: 0.8rem 1rem;
+        min-width: 80px;
+    }
+
+    .tips-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+
+    .tip-card {
+        padding: 1.5rem;
+    }
+
+    .tip-number {
+        width: 35px;
+        height: 35px;
+        font-size: 1rem;
+        top: -12px;
+        left: 20px;
+    }
+
+    .game-instructions {
+        padding: 1.5rem;
+        margin: 0 15px;
+    }
+
+    .intro-text,
+    .tips-intro,
+    .tips-conclusion {
+        padding: 0 15px;
+    }
+}
+
+@media (max-width: 480px) {
+    .sudoku-grid {
+        width: 300px;
+        height: 300px;
+    }
+
+    .sudoku-cell {
+        font-size: 1rem;
+    }
+
+    .page-title {
+        font-size: 2rem;
+    }
+
+    .game-controls {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .difficulty-selector {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .game-instructions {
+        padding: 1.5rem;
+        margin: 0 15px;
+    }
+
+    .tips-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+
+    .tip-card {
+        padding: 1.2rem;
+        margin: 0 10px;
+    }
+
+    .tip-card h3 {
+        font-size: 1.1rem;
+    }
+
+    .tip-number {
+        width: 30px;
+        height: 30px;
+        font-size: 0.9rem;
+        top: -10px;
+        left: 15px;
+    }
+
+    .intro-text .page-description {
+        font-size: 1rem;
+        padding: 0 10px;
+    }
+
+    .tips-conclusion {
+        margin: 0 10px;
+        padding: 1.5rem;
+    }
+}
+
+/* Game Over Modal */
+.game-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+.game-modal.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+.modal-content {
+    background: white;
+    padding: 3rem 2rem;
+    border-radius: 15px;
+    text-align: center;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    max-width: 400px;
+    width: 90%;
+}
+
+.modal-content h2 {
+    color: #776e65;
+    margin-bottom: 1rem;
+    font-size: 2rem;
+}
+
+.modal-content p {
+    color: #8f7a66;
+    margin-bottom: 2rem;
+    font-size: 1.1rem;
+}
+
+.modal-buttons {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+}
+
+.modal-btn {
+    padding: 12px 24px;
+    border: none;
+    border-radius: 6px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.modal-btn.primary {
+    background: #8f7a66;
+    color: white;
+}
+
+.modal-btn.secondary {
+    background: transparent;
+    color: #8f7a66;
+    border: 2px solid #8f7a66;
+}
+
+.modal-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+} 
